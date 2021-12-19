@@ -2,13 +2,13 @@
 //  LoginViewController.swift
 //  localLogin
 //
-//  Created by Сергей Бровко on 15.12.2021.
+//  Created by СV on 15.12.2021.
 //
 
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     // MARK: - IB Outlets
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -16,8 +16,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     // MARK: - Private properties
-    let password = "HappyNewYear"
+    
+    let user = Model.getUser()
     let username = "student"
+    let password = "HappyNewYear"
     
     // MARK: - Live Cicle
     override func viewDidLoad() {
@@ -30,31 +32,46 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 10
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super .touchesBegan(touches, with: event)
-        if let touch = touches.first {
-            view.endEditing(true)
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let tabBarController = segue.destination as! UITabBarController
+        
+        guard let viewControllers = tabBarController.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            if let welcomeVC = viewController as? WelcomViewController {
+                welcomeVC.name = "\(user.person.name) \(user.person.surName)"
+            }else if let navigationVC = viewController as? UINavigationController {
+                
+                if let profileVC = navigationVC.topViewController as? ProfileViewController {
+                    profileVC.avatarString = user.person.avatar
+                    profileVC.name = user.person.name
+                    profileVC.surname = user.person.surName
+                    profileVC.scills = user.person.scills
+                }
+            }
         }
     }
-    
     
     // MARK: - IB Action
     
     @IBAction func forgotAction(_ sender: UIButton) {
         if sender.titleLabel?.text == "Forgot Password?" {
-            showAllert(title: "Password", message: "Correct passsword \"\(password)\" 😉")
+            showAllert(title: "Password", message: "Correct passsword \"\(user.pasword)\" 😉")
         }else {
-            showAllert(title: "Username", message: "Correct username \"\(username)\" 😉")
+            showAllert(title: "Username", message: "Correct username \"\(user.login)\" 😉")
         }
     }
-     
-    @IBAction func passwordAction() {
-        validateToWelcome()
+    
+    @IBAction func loginTaped() {
+        if loginTextField.text != user.login || passwordTextField.text != user.pasword {
+            showAllert(title: "Invalide login or password",
+                       message: "Please, enter valide login or password",
+                       textField: passwordTextField)
+        }
     }
     
-    @IBAction func logInAction(_ sender: UIButton) {
-        validateToWelcome()
-    }
     
     @IBAction func unwind(for seque: UIStoryboardSegue){
         loginTextField.text = ""
@@ -63,38 +80,35 @@ class LoginViewController: UIViewController {
     
     // MARK: - Private methods
     
-    private func validateToWelcome(){
-        if loginTextField.text != username, passwordTextField.text != password{
-            showAllert(title: "Data",
-                       message: "Correct passsword \"\(password)\" Correct username \"\(username)\" 😉")
-        }else {
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "WelcomViewController") as! WelcomViewController
-            guard let userPost = loginTextField.text else { return }
-            vc.username = userPost
-            present(vc, animated: true, completion: nil)
-        }
-    }
-    
-    private func showAllert(title: String, message: String) {
+    private func showAllert(title: String, message: String, textField: UITextField? = nil) {
         let allert = UIAlertController(title: "Incorrect \(title)",
                                        message: message,
                                        preferredStyle: .alert)
         
-        allert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        allert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+            textField?.text = ""
+        }))
         present(allert, animated: true, completion: nil)
     }
 }
 
+//MARK: - TextField Controllers
 extension LoginViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == loginTextField {
-            textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
+        } else {
+            loginTaped()
+            performSegue(withIdentifier: "welcomeSeque", sender: nil)
         }
-        
         return true
     }
 }
+
+

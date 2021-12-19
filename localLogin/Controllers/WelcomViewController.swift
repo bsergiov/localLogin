@@ -14,15 +14,15 @@ class WelcomViewController: UIViewController {
     
     @IBOutlet weak var logOutButton: UIButton!
     
-    // MARK: - Public Property
-    var username = ""
+    // MARK: - Public Properties
+    var name = ""
     
-// MARK: - Live Cicle
+    // MARK: - Live Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let helloText = helloLabel.text {
-            helloLabel.text = "\(helloText) \(username)"
+            helloLabel.text = "\(helloText) \(name)"
         }
     }
     
@@ -34,7 +34,4 @@ class WelcomViewController: UIViewController {
     // MARK: - IB Action
     @IBAction func logOutAction() {
     }
-    
-    
-
 }

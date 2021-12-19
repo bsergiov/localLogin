@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC604CEB276F806500D9FACD /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC604CEA276F806500D9FACD /* UserModel.swift */; };
+		CC604CED276FA17800D9FACD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC604CEC276FA17800D9FACD /* ProfileViewController.swift */; };
+		CC604CEF276FAED200D9FACD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC604CEE276FAED200D9FACD /* AboutViewController.swift */; };
+		CC604CF2276FB29000D9FACD /* AboutCastomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC604CF1276FB29000D9FACD /* AboutCastomCellTableViewCell.swift */; };
 		CCA8C5B2276A5895008FFC57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA8C5B1276A5895008FFC57 /* AppDelegate.swift */; };
 		CCA8C5B4276A5895008FFC57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA8C5B3276A5895008FFC57 /* SceneDelegate.swift */; };
 		CCA8C5B9276A5895008FFC57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA8C5B7276A5895008FFC57 /* Main.storyboard */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC604CEA276F806500D9FACD /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		CC604CEC276FA17800D9FACD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CC604CEE276FAED200D9FACD /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		CC604CF1276FB29000D9FACD /* AboutCastomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCastomCellTableViewCell.swift; sourceTree = "<group>"; };
 		CCA8C5AE276A5895008FFC57 /* localLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = localLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA8C5B1276A5895008FFC57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCA8C5B3276A5895008FFC57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +47,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC604CE6276F3D2900D9FACD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CCA8C5B7276A5895008FFC57 /* Main.storyboard */,
+				CCA8C5BC276A5897008FFC57 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CC604CE7276F3D4A00D9FACD /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CCA8C5BA276A5897008FFC57 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CC604CE8276F3D9F00D9FACD /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				CCA8C5B1276A5895008FFC57 /* AppDelegate.swift */,
+				CCA8C5B3276A5895008FFC57 /* SceneDelegate.swift */,
+				CCA8C5BF276A5897008FFC57 /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		CC604CE9276F3E5200D9FACD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC604CEA276F806500D9FACD /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC604CF0276FB18D00D9FACD /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				CC604CF1276FB29000D9FACD /* AboutCastomCellTableViewCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		CCA8C5A5276A5895008FFC57 = {
 			isa = PBXGroup;
 			children = (
@@ -59,12 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				CCA8C5C5276A58B7008FFC57 /* Controllers */,
-				CCA8C5B1276A5895008FFC57 /* AppDelegate.swift */,
-				CCA8C5B3276A5895008FFC57 /* SceneDelegate.swift */,
-				CCA8C5B7276A5895008FFC57 /* Main.storyboard */,
-				CCA8C5BA276A5897008FFC57 /* Assets.xcassets */,
-				CCA8C5BC276A5897008FFC57 /* LaunchScreen.storyboard */,
-				CCA8C5BF276A5897008FFC57 /* Info.plist */,
+				CC604CE6276F3D2900D9FACD /* Storyboards */,
+				CC604CE9276F3E5200D9FACD /* Models */,
+				CC604CE8276F3D9F00D9FACD /* SupportFiles */,
+				CC604CE7276F3D4A00D9FACD /* Resource */,
 			);
 			path = localLogin;
 			sourceTree = "<group>";
@@ -72,8 +121,11 @@
 		CCA8C5C5276A58B7008FFC57 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CC604CF0276FB18D00D9FACD /* CustomCell */,
 				CCA8C5C6276A58E2008FFC57 /* LoginViewController.swift */,
 				CCA8C5C8276A58ED008FFC57 /* WelcomViewController.swift */,
+				CC604CEC276FA17800D9FACD /* ProfileViewController.swift */,
+				CC604CEE276FAED200D9FACD /* AboutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -149,9 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC604CED276FA17800D9FACD /* ProfileViewController.swift in Sources */,
 				CCA8C5C7276A58E2008FFC57 /* LoginViewController.swift in Sources */,
+				CC604CF2276FB29000D9FACD /* AboutCastomCellTableViewCell.swift in Sources */,
 				CCA8C5B2276A5895008FFC57 /* AppDelegate.swift in Sources */,
+				CC604CEF276FAED200D9FACD /* AboutViewController.swift in Sources */,
 				CCA8C5B4276A5895008FFC57 /* SceneDelegate.swift in Sources */,
+				CC604CEB276F806500D9FACD /* UserModel.swift in Sources */,
 				CCA8C5C9276A58ED008FFC57 /* WelcomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +358,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = localLogin/Info.plist;
+				INFOPLIST_FILE = localLogin/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -329,7 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = localLogin/Info.plist;
+				INFOPLIST_FILE = localLogin/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
